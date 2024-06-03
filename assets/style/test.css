@@ -1,0 +1,332 @@
+/* general css */
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Amatic+SC:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+:root {
+  --delayShake: 1.2s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-family: "Acme";
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  /* Hide scrollbar for Webkit browsers */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* For Webkit browsers */
+}
+
+body.noScroll {
+  overflow-y: hidden;
+}
+
+.scene {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+.scene__one {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #e8ecea;
+}
+.scene__headline {
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  font-family: "Amatic SC", sans-serif;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  font-size: 8vw;
+  z-index: 1;
+}
+.scene__paragraph {
+  background-color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(14px, 1.5vw, 20px);
+  position: absolute;
+  left: 25%;
+  width: 50%;
+  top: -40%;
+  padding: 5%;
+  text-align: center;
+  z-index: 1;
+  box-shadow: 0 0 1vw 0.5vw rgba(0, 0, 0, 0.35);
+}
+.scene__two {
+  background-color: #bcc1d0;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+}
+.scene__two--disabled {
+  transition: 0.8s ease-in-out;
+  bottom: 100%;
+  overflow: hidden;
+}
+.scene__two--active {
+  animation: skyCarbon 1s forwards 1.5s;
+}
+.scene__building {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  gap: 5%;
+  align-items: center;
+  position: absolute;
+  bottom: 10vw;
+}
+.scene__building--one {
+  width: 6%;
+}
+.scene__building--two {
+  width: 13%;
+  left: 6%;
+}
+.scene__building--three {
+  width: 15%;
+  left: 19%;
+}
+.scene__building--four {
+  width: 13.5%;
+  left: 34%;
+}
+.scene__building--five {
+  width: 13.5%;
+  left: 47.5%;
+}
+.scene__building--six {
+  width: 10%;
+  left: 61%;
+}
+.scene__building--seven {
+  width: 7%;
+  left: 71%;
+}
+.scene__building--eight {
+  width: 10%;
+  right: 12%;
+}
+.scene__building--nine {
+  width: 12%;
+  right: 0%;
+}
+
+svg {
+  bottom: 0;
+  position: absolute;
+}
+
+.deer {
+  bottom: 10vw;
+  left: 0;
+  width: 10%;
+  fill: #1e5e4b;
+  opacity: 0;
+}
+.deer__legs--one {
+  transform-origin: center;
+}
+.deer__legs--two {
+  transform-origin: center;
+}
+
+.forest__shake--active {
+  animation: sceneShakingGround 0.4s alternate 19.25;
+}
+.forest__trees {
+  position: absolute;
+  bottom: 0;
+  fill: #1e5e4b;
+  width: 102%;
+  left: 0;
+}
+.forest__tree {
+  overflow: hidden;
+}
+.forest__tree--shake {
+  animation: sceneShakingGround 0.4s alternate infinite;
+}
+.forest__patch--one {
+  fill: #1e5e4b;
+  width: 102%;
+  left: -1%;
+  bottom: -0.5vw;
+}
+.forest__patch--two {
+  fill: #287561;
+}
+.forest__patch--three {
+  fill: #4e9b85;
+}
+.forest__patch--four {
+  fill: #8bb6a9;
+}
+
+.bulldozer__svg {
+  width: 60%;
+  aspect-ratio: 1255/672;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  right: -60%;
+  fill: #DBBB6B;
+}
+.bulldozer__svg--active {
+  animation: bulldozerDrive 6.5s linear forwards var(--delayShake);
+}
+.bulldozer__group--pipe {
+  animation: pipeShake 0.5s linear infinite;
+  fill: #6e707c;
+}
+.bulldozer__group--lift {
+  animation: rocking 0.5s alternate infinite;
+}
+.bulldozer__group--body {
+  animation: upDown 0.5s alternate infinite;
+}
+.bulldozer__group--wheel {
+  transform-origin: center;
+  animation: rotateWheel 0.8s infinite;
+  transform-box: fill-box;
+  fill: #b1b7c9;
+  stroke-width: 4;
+  stroke: #8b8f99;
+}
+.bulldozer__yellow-light {
+  fill: #EBCA71;
+}
+.bulldozer__yellow-mid {
+  fill: #C1A35E;
+}
+.bulldozer__yellow-dark {
+  fill: #947B4A;
+}
+.bulldozer__grey-light {
+  fill: #B1B7C9;
+}
+.bulldozer__grey-mid {
+  fill: #8B8F99;
+}
+.bulldozer__grey-dark {
+  fill: #6E707C;
+}
+.bulldozer__grey-xdark {
+  fill: #5F6269;
+}
+
+.bulldozer__group--wheel {
+  transform-origin: center;
+  animation: rotateWheel 0.8s infinite;
+  transform-box: fill-box;
+  fill: #b1b7c9;
+  stroke-width: 4;
+  stroke: #8b8f99;
+}
+
+@keyframes bulldozerDrive {
+  100% {
+    left: 200%;
+  }
+}
+@keyframes rocking {
+  from {
+    transform: rotate(0) translateY(-30px);
+  }
+  to {
+    transform: rotate(2deg) translateY(-40px);
+  }
+}
+@keyframes upDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+@keyframes pipeShake {
+  0%, 50%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
+}
+@keyframes rotateWheel {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes deerLegsOne {
+  0% {
+    transform: skew(-10deg);
+  }
+  50% {
+    transform: skew(10deg);
+  }
+  100% {
+    transform: skew(-10deg);
+  }
+}
+@keyframes deerLegsTwo {
+  0% {
+    transform: skew(10deg);
+  }
+  50% {
+    transform: skew(-10deg);
+  }
+  100% {
+    transform: skew(10deg);
+  }
+}
+@keyframes fallTree {
+  4% {
+    transform: translate(-2%, 30%) rotate(30deg);
+  }
+  8% {
+    transform: translate(-4%, 60%) rotate(60deg);
+  }
+  12% {
+    transform: translate(-6%, 90%) rotate(90deg);
+  }
+  16%, 100% {
+    transform: translate(-8%, 120%) rotate(120deg);
+  }
+}
+@keyframes sceneShakingGround {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-0.5%, -0.5%) rotate(-0.2deg);
+  }
+  50% {
+    transform: translate(0.5%) rotate(0.2deg);
+  }
+  75% {
+    transform: translate(-0.5%, 0.5%) rotate(-0.2deg);
+  }
+  100% {
+    transform: translate(0.5%, -0.5%) rotate(0.2deg);
+  }
+}/*# sourceMappingURL=test.css.map */
