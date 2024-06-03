@@ -42,11 +42,9 @@ body {
     width: 100vw;
 
     &__one {
-        overflow: hidden;
         position: absolute;
         width: 100%;
         height: 100%;
-      //  z-index: 3; // pin element of GSAP makes other scenes go above
         background-color: colors.$forest-bg;
     }
 
@@ -69,89 +67,141 @@ body {
         width: 50%;
         top: -40%;
         padding: 5%;
-        // opacity: 0;
         text-align: center;
         z-index: 1;
         box-shadow: 0 0 1vw 0.5vw rgba(0, 0, 0, 0.35);
     }
     
     &__two {
-        background-color: #bcc1d0;
         align-items: flex-end;
         height: 100%;
         width: 100%;
         position: absolute;
         display: flex;
+        opacity: 0;
 
-        &--disabled {
-            transition: 0.8s ease-in-out;
-            bottom: 100%;
-            overflow: hidden;
-        }
-
-        &--active {
-            animation: skyCarbon 1s forwards 1.5s;
-        }
+        background-color: #bcc1d0;
     }
 
-    &__building {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-evenly;
-        gap: 5%;
-        align-items: center;
+    &__three {
+        opacity: 0;
         position: absolute;
-        bottom: 10vw;
-
-        &--one {
-            width: 6%;
-        }
-
-        &--two {
-            width: 13%;
-            left: 6%;
-        }
-
-        &--three {
-            width: 15%;
-            left: 19%;
-        }
-
-        &--four {
-            width: 13.5%;
-            left: 34%;
-        }
-
-        &--five {
-            width: 13.5%;
-            left: 47.5%;
-        }
-
-        &--six {
-            width: 10%;
-            left: 61%;
-        }
-
-        &--seven {
-            width: 7%;
-            left: 71%;
-        }
-
-        &--eight {
-            width: 10%;
-            right: 12%;
-        }
-
-        &--nine {
-            width: 12%;
-            right: 0%;
-        }
+        height: 100%;
+        width: 100%;
+            background-color: colors.$forest-bg;
     }
-
-    
-  
   }
 
+.city {
+  &__building {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    gap: 5%;
+    align-items: center;
+    position: absolute;
+    bottom: 10vw;
+
+    &--one {
+        width: 6%;
+    }
+
+    &--two {
+        width: 13%;
+        left: 6%;
+    }
+
+    &--three {
+        width: 15%;
+        left: 19%;
+    }
+
+    &--four {
+        width: 13.5%;
+        left: 34%;
+    }
+
+    &--five {
+        width: 13.5%;
+        left: 47.5%;
+    }
+
+    &--six {
+        width: 10%;
+        left: 61%;
+    }
+
+    &--seven {
+        width: 7%;
+        left: 71%;
+    }
+
+    &--eight {
+        width: 10%;
+        right: 12%;
+    }
+
+    &--nine {
+        width: 12%;
+        right: 0%;
+    }
+}
+
+&__floor {
+    width: 100%;
+    opacity: 0;
+    background-color: #232c43;
+    padding: 3% 1.2% 0;
+    position: absolute;
+}
+
+&__road {
+    width: 0%;
+    display: block;
+    height: 20%;
+    margin: 0 auto;
+    opacity: 0;
+    background-color: #555e73;
+}
+
+&__window {
+    background-color: #4c5f8f;
+    opacity: 0; 
+
+    &--small {
+        height: 11%;
+        width: 10%;
+        margin: 0 9%;
+    }
+
+    &--medium {
+        height: 8%;
+        width: 50%;
+    }
+
+    &--large {
+        height: 10%;
+        width: 75%;
+    }
+
+    &--tall {
+        width: 10%;
+        margin: 0 9%;
+        height: 30%;
+    }
+}
+
+&__water {
+    position: absolute;
+    background-color: rgba(72, 81, 105, 0.741);
+    width: 120%;
+    height: 0;
+    transition: 1s;
+    bottom: -10vw;
+    left: -5%;
+    overflow: hidden;
+}
+}
   svg {
     bottom: 0;
     position: absolute;
@@ -176,6 +226,137 @@ body {
            // animation: deerLegsTwo 0.5s infinite;
         }
     }    
+}
+
+.planes {
+    &__container {
+        position: absolute;
+        transform: translate(-50%, 0%);
+        left: 50%;
+        top: 3%;
+        display: flex;
+        gap: 5px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__label {
+        margin-top: 1rem;
+        z-index: 2;
+        padding: 1% 2%;
+        font-size: 1.4em;
+        border-radius: 3px;
+        border: solid rgb(44, 44, 44) 1px;
+        background-color: colors.$forest-bg;
+    }
+
+    &__checkbox {
+        display: none;
+
+      /*  &:checked ~ .planes__label {
+            display: none;
+        } */
+    }
+
+    &__text {
+        padding: 2%;
+        text-align: center;
+        box-shadow: 0 0 1vw 0.5vw rgba(0, 0, 0, 0.35);
+        background-color: colors.$forest-bg;
+    }
+
+
+    &__seed {
+        position: absolute;
+        width: 5%;
+        fill: colors.$dark-woodV1;
+        left: 30%;
+        bottom: 42vw;
+        opacity: 0;
+        transition: opacity 0.2s;
+
+        &--active {
+            opacity: 1;
+            animation: plantSeed 2s forwards;
+        }
+    }
+
+    &__path {
+        &--active {
+            animation: seedGrow 2s forwards;
+        }
+    }
+
+    &__patch {
+        &--one {
+            fill: colors.$forest-greenV4;
+        }
+
+        &--two {
+            fill: colors.$forest-greenV3;
+        }
+
+        &--three {
+            fill: colors.$forest-greenV2;
+        }
+
+        &--four {
+            fill: colors.$forest-greenV1;
+        }
+    }
+
+    &__mountain {
+        fill: colors.$forest-greenV1;
+    }
+
+    &__shadow {
+        &--mountain {
+            fill: colors.$forest-greenV1_shade;
+        }
+    }
+
+    &__leafes {
+        &--sapling {
+            fill: colors.$forest-greenV3;
+        }
+
+        &--light {
+            fill: colors.$forest-greenV3;
+        }
+
+        &--dark {
+            fill: #215f4b;
+        }
+
+        &--mid {
+            fill: #1f5f4b;
+        }
+    }
+
+    &__stem {
+        &--sapling,
+        &--middle {
+            fill: #205f4b;
+        }
+
+        &--brown {
+            fill: colors.$dark-woodV1;
+        }
+    }
+
+    &__grass {
+        &--back {
+            fill: colors.$forest-greenV2;
+        }
+
+        &--front {
+            fill: colors.$forest-greenV3;
+        }
+    }
+
+    &__dividers {
+        fill: colors.$forest-bg;
+    }
 }
 
 
@@ -348,54 +529,6 @@ body {
 
     to {
         transform: rotate(360deg);
-    }
-}
-
-
-@keyframes deerLegsOne {
-    0% {
-        transform: skew(-10deg);
-    }
-
-    50% {
-        transform: skew(10deg);
-    }
-
-    100% {
-        transform: skew(-10deg);
-    }
-}
-
-@keyframes deerLegsTwo {
-    0% {
-        transform: skew(10deg);
-    }
-
-    50% {
-        transform: skew(-10deg);
-    }
-
-    100% {
-        transform: skew(10deg);
-    }
-}
-
-@keyframes fallTree {
-    4% {
-        transform: translate(-2%, 30%) rotate(30deg);
-    }
-
-    8% {
-        transform: translate(-4%, 60%) rotate(60deg);
-    }
-
-    12% {
-        transform: translate(-6%, 90%) rotate(90deg);
-    }
-
-    16%,
-    100% {
-        transform: translate(-8%, 120%) rotate(120deg);
     }
 }
 

@@ -17,17 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
   
   let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".scene__one",
+      trigger: ".scene",
       pin: true,
       start: "top top",
-      end: window.innerHeight, // end when height of scene
+      end: window.innerHeight*2, // end when height of scene
       scrub: 5,
       fastScrollEnd: 2000,
-      onComplete: () => tl2.play()
+     // onComplete: () => tl2.play()
     },
   });
   
-
+  
+{
   tl
     .addLabel("intro")
     .add(
@@ -49,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "80%": { bottom: "11vw" },
         "100%": { left: "85%", bottom: "14vw", display: "none" },
       },
-      duration: 10
+      duration: 20
     }, "deer")
     .to(".deer__legs--one", {
         keyframes: {
@@ -57,8 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
           "50%": { skewX: '7.7deg', skewY:'10deg' },
           "100%": { skewX:'-7.7deg', skewY:'-10deg' }
         },
-        duration: 0.4, // Total duration of the animation
-        repeat: 8/0.4
+        duration: 0.8, // Total duration of the animation
+        repeat: 20/0.8
       }, "deer") // insert at the START of the  previous animation
       .to(".deer__legs--two", {
         keyframes: {
@@ -66,38 +67,33 @@ document.addEventListener("DOMContentLoaded", () => {
           "50%": { skewX: '-7.7deg', skewY:'-10deg' },
           "100%": { skewX:'7.7deg', skewY:'10deg' }
         },
-        duration: 0.4, // Total duration of the animation
-        repeat: 8/0.4
+        duration: 0.8, // Total duration of the animation
+        repeat: 20/0.8
       }, "deer") 
-      .from(".scene__paragraph--one", { top: '100%', duration: 15})
+      .from(".scene__paragraph--one", { top: '120%', duration: 15})
       .from(".bulldozer", {right: '100%', duration: 8})
       .add(treeFall('.forest__tree--one', '180% 0%', '<'))
       .add(treeFall('.forest__tree--two', '20% 25%', '<1'))
       .add(treeFall('.forest__tree--three', '20% 30%','<3'))
       .add(treeFall('.forest__tree--four', '20% 35%', '<4'))
       .add(treeFall('.forest__tree--five', '20% 40%', '<5'))
-      .from(".scene__paragraph--two", { top: '100%', duration: 15}, "lastPar")
+      .from(".scene__paragraph--two", { top: '120%', duration: 15}, "lastPar")
       // .to(".scene__one", { duration: 5, scale: 2, opacity: 0 })
+    }
 
-   
-  let tlEnd = tl.duration();
-  console.log(tl.duration())
-
-
-  // Initialize tl2 with its start synchronized to the end of tl
+/*  // Initialize tl2 with its start synchronized to the end of tl
   let tl2 = gsap.timeline({
     paused: true, // Ensure tl2 starts paused
     scrollTrigger: {
       trigger: ".scene__two",
       pin: true,
-      start: 'top top', // 
-      end: `+=`, // End of tl2
+      start: window.innerHeight, // 
+      end: window.innerHeight*2, // End of tl2
       scrub: 5,
       markers: true, // For debugging, shows the scroll trigger start and end
       fastScrollEnd: 2000
     }
-  });
-
+  }); */
 
   function buildingSmall() {
     return {
@@ -148,20 +144,71 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
   
-      tl2.from(".scene__two", { duration: 5, opacity: 0 })
-      .to(".scene__building--one", { keyframes: buildingMediumV2(), duration: 10 }, "buildings")
-      .to(".scene__building--two", { keyframes: buildingTall(), duration: 10 }, "buildings")
-      .to(".scene__building--three", { keyframes: buildingMediumV1(), duration: 10 }, "buildings")
-      .to(".scene__building--four", { keyframes: buildingMediumV2(), duration: 10 }, "buildings")
-      .to(".scene__building--five", { keyframes: buildingSmall(), duration: 10 }, "buildings")
-      .to(".scene__building--six", { keyframes: buildingMediumV1(), duration: 10 }, "buildings")
-      .to(".scene__building--seven", { keyframes: buildingMediumV3(), duration: 10 }, "buildings")
-      .to(".scene__building--eight", { keyframes: buildingMediumV2(), duration: 10 }, "buildings")
-      .to(".scene__building--nine", { keyframes: buildingTall(), duration: 10 }, "buildings")
+      tl
+      .to('.scene__two', {opacity: 1})
+      .to(".city__floor", {keyframes: {
+        "0%": {opacity: '1'},
+        "24%": {height: '0'},
+        "25%": {height: '2.5vw'},
+        "50%, 74%": {height: '5vw'},
+        "75%, 99%": {height: '7.5vw'},
+        "100%": {height: '10vw'}
+      }, duration: 2})
+      .to(".city__road", {
+        keyframes: {
+          "0%": {
+            opacity: 1
+          },
+          "50%": {
+            boxShadow: "0 0 0 0 #444c5e, 0 0 0 0 rgba(0, 0, 0, 0.05)",
+            width: "100%",
+            borderRight: "0vw solid transparent"
+          },
+          "100%": {
+            opacity: 1,
+            width: "100%",
+            borderRight: "0vw solid transparent",
+            boxShadow: "0 0.3vw 1px 3px #3a4150, 0 -5vw 10vw 5vw rgba(0, 0, 0, 0.1)"
+          }
+        },
+        duration: 2
+      })
+      .to(".city__building--one", { keyframes: buildingMediumV2(), duration: 10 }, "buildings")
+      .to(".city__building--two", { keyframes: buildingTall(), duration: 10 }, "buildings")
+      .to(".city__building--three", { keyframes: buildingMediumV1(), duration: 10 }, "buildings")
+      .to(".city__building--four", { keyframes: buildingMediumV2(), duration: 10 }, "buildings")
+      .to(".city__building--five", { keyframes: buildingSmall(), duration: 10 }, "buildings")
+      .to(".city__building--six", { keyframes: buildingMediumV1(), duration: 10 }, "buildings")
+      .to(".city__building--seven", { keyframes: buildingMediumV3(), duration: 10 }, "buildings")
+      .to(".city__building--eight", { keyframes: buildingMediumV2(), duration: 10 }, "buildings")
+      .to(".city__building--nine", { keyframes: buildingTall(), duration: 10 }, "buildings")
+      .to(".city__window", {opacity: 1, duration: 2})
+      .from(".scene__paragraph--three", { top: '120%', duration: 15})
+      .to(".city__window", {backgroundColor: '#565964', duration: 2}, "phaseTwo")
+      .to(".scene__two--background", {backgroundColor: '#6e717c', duration: 2}, "phaseTwo")
+      .to(".city__water", {
+        keyframes: {
+          "0%": { rotation: -10, height: "0" },
+          "20%": { rotation: 10 },
+          "40%": { rotation: -10 },
+          "60%": { rotation: 10 },
+          "80%": { rotation: -10 },
+          "100%": { rotation: 0, height: "38vw" }
+        },
+        duration: 5 // Adjust the duration as needed
+      })
+      .from(".scene__paragraph--four", { top: '120%', duration: 15}, '>')
 
-      
+      tl
+      .to('.scene__three', {opacity: 1})
+      .from('.planes__patch--four', { yPercent: 100, duration: 4 })
+      .from('.planes__patch--three', { yPercent: 100, duration: 4 })
+      .from('.planes__patch--two', { yPercent: 100, duration: 4 })
+      .from('.planes__patch--one', { yPercent: 100, duration: 4 })
 
-      
+
+
+      /*
   const deer = document.querySelector('.deer');
   const parOne = document.querySelector('.scene__paragraph--one')
   const forestPatch = document.querySelector('.forest__shake')
@@ -182,8 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
   viewportObserver.observe(deer);
   viewportObserver.observe(parOne);
   viewportObserver.observe(bulldozer);
-  viewportObserver.observe(forestTree);
+  viewportObserver.observe(forestTree); */
 
 
 });
-
