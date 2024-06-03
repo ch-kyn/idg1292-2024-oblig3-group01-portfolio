@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
+  ScrollTrigger.normalizeScroll(true);
 
   const treeFall = (tree, transformOrigin, delay) => {
     tl.to(tree, {

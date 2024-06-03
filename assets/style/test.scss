@@ -32,8 +32,8 @@ html::-webkit-scrollbar {
     display: none; /* For Webkit browsers */
 }
 
-body.noScroll {
-    overflow-y: hidden;
+body {
+    overflow-x: hidden;
   }
   
 .scene {
