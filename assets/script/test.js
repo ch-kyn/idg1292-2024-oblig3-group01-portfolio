@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-  ScrollTrigger.normalizeScroll(true);
+  ScrollTrigger.normalizeScroll(true); 
 
   const treeFall = (tree, transformOrigin, delay) => {
     tl.to(tree, {
@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
       pin: true,
       start: "top top",
       end: window.innerHeight, // end when height of scene
-      scrub: 1,
+      scrub: 5,
+      fastScrollEnd: 2000,
+      onComplete: () => tl2.play()
     },
   });
   
@@ -30,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
     .addLabel("intro")
     .add(
       [
-        gsap.from(".forest__patch--right", { xPercent: 100, duration: 2 }),
-        gsap.from(".forest__patch--left", { xPercent: -100, duration: 2 }),
+        gsap.from(".forest__patch--right", { xPercent: 100, duration: 4 }),
+        gsap.from(".forest__patch--left", { xPercent: -100, duration: 4 }),
       ],
       "forestPatches"
     )
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "80%": { bottom: "11vw" },
         "100%": { left: "85%", bottom: "14vw", display: "none" },
       },
-      duration: 8
+      duration: 10
     }, "deer")
     .to(".deer__legs--one", {
         keyframes: {
@@ -81,18 +83,21 @@ document.addEventListener("DOMContentLoaded", () => {
   let tlEnd = tl.duration();
   console.log(tl.duration())
 
+
   // Initialize tl2 with its start synchronized to the end of tl
   let tl2 = gsap.timeline({
     paused: true, // Ensure tl2 starts paused
     scrollTrigger: {
       trigger: ".scene__two",
       pin: true,
-      start: `.scene__two`, // 
+      start: 'top top', // 
       end: `+=`, // End of tl2
-      scrub: 1,
-      markers: true // For debugging, shows the scroll trigger start and end
+      scrub: 5,
+      markers: true, // For debugging, shows the scroll trigger start and end
+      fastScrollEnd: 2000
     }
   });
+
 
   function buildingSmall() {
     return {
