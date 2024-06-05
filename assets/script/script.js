@@ -156,12 +156,12 @@ document.addEventListener("DOMContentLoaded", () => {
       )
       .from(".scene__paragraph--one", { top: "120%", duration: 15 })
       .from(".bulldozer", { right: "100%", duration: 12 })
-      .add(treeFall(".forest__tree--one", "180% 0%", "<"))
-      .add(treeFall(".forest__tree--two", "20% 25%", "<1"))
-      .add(treeFall(".forest__tree--three", "20% 30%", "<3"))
-      .add(treeFall(".forest__tree--four", "20% 35%", "<3.2"))
-      .add(treeFall(".forest__tree--five", "20% 40%", "<4.5"))
-      .from(".scene__paragraph--two", { top: "120%", duration: 15 }, "lastPar");
+      .add(treeFall(".forest__tree--one", "160% 0%", "<")) // make first tree start falling when bulldozer starts appearing
+      .add(treeFall(".forest__tree--two", "150% 10%", "<1"))
+      .add(treeFall(".forest__tree--three", "140% -10%", "<3"))
+      .add(treeFall(".forest__tree--four", "130% -10%", "<0.2"))
+      .add(treeFall(".forest__tree--five", "120% 20%", "<0.5"))
+      .from(".scene__paragraph--two", { top: "120%", duration: 15 });
   }
 
   tl.to(".scene__two", { opacity: 1, duration: 6 })
@@ -267,15 +267,15 @@ document.addEventListener("DOMContentLoaded", () => {
   tl.to(".scene__three--one", { opacity: 1, duration: 6 })
     .to('.planes__container', {opacity: 1, duration: 3 })
 
-    tl.to(".scene__three--two", { display: 'block', duration: 6 })
+    tl.to(".scene__three--two", { display: 'block', duration: 6 }, "+=50%") // creating a gap by inserting it 50% beyond the timeline, make it appear for longer
     .from('.tree-growth__stage--one', { opacity: 0, duration: 8 })
     .from('.tree-growth__stage--two', { opacity: 0, duration: 8 })
     .from('.tree-growth__stage--three', { opacity: 0, duration: 8 })
 
-    tl.to(".scene__three--three", { display: 'block', duration: 6 })
+    tl.to(".scene__three--three", { display: 'block', duration: 6 }, "+=50%")
     .to('.scene__paragraph--five', {opacity: 1, duration: 3})
 
-    tl.to(".scene__three--four", { display: 'block', duration: 6 })
+    tl.to(".scene__three--four", { display: 'block', duration: 6 }, "+=50%")
     .from(".bird", { keyframes: {xPercent: [0, -50, -100, -175, -250],
     yPercent: [0, 10, 0, 10, 0]}, duration: 8, ease: "power1.inOut"}, "birdMove")
     .from(".bird__wing", {
