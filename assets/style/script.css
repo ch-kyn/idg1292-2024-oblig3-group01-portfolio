@@ -752,12 +752,4 @@ svg {
     align-items: center;
     font-size: 2rem;
   }
-}
-@media (prefers-reduced-motion: reduce) {
-  .bulldozer__pipe,
-  .bulldozer__lift,
-  .bulldozer__body,
-  .bulldozer__wheel {
-    animation: none;
-  }
 }/*# sourceMappingURL=script.css.map */

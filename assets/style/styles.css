@@ -169,7 +169,7 @@ body {
   color: #b93939;
 }
 .keyword--green {
-  color: #52A38C;
+  color: #347462;
 }
 .keyword--blue {
   color: #6a7ca9;
@@ -197,7 +197,7 @@ body {
   z-index: 1;
 }
 .scene__paragraph {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   font-size: clamp(14px, 1.5vw, 20px);
   position: absolute;
   left: 25%;
@@ -757,20 +757,13 @@ svg {
     font-size: 2rem;
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .bulldozer--active {
-    animation: bulldozerDrive 7s linear forwards;
-  }
-  .bulldozer__group--pipe {
+  .bulldozer__pipe,
+  .bulldozer__lift,
+  .bulldozer__body,
+  .bulldozer__wheel {
     animation: none;
   }
-  .bulldozer__group--lift {
-    animation: none;
-  }
-  .bulldozer__group--body {
-    animation: none;
-  }
-  .bulldozer__group--wheel {
-    animation: none;
-  }
-}/*# sourceMappingURL=test.css.map */
+}
+/*# sourceMappingURL=test.css.map */
