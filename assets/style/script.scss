@@ -50,7 +50,7 @@ body {
     color: #b93939;
   }
   &--green {
-    color: colors.$forest-greenV2--keyword;
+    color:  #255c4c;;
   }
 
   &--blue {
@@ -86,7 +86,7 @@ body {
   }
 
   &__paragraph {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
     font-size: clamp(14px, 1.5vw, 20px);
     position: absolute;
     left: 25%;
@@ -749,13 +749,10 @@ svg {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bulldozer {
-    &__pipe,
-    &__lift,
-    &__lift,
-    &__body,
-    &__wheel {
-      animation: none;
-    }
+  .bulldozer__pipe,
+  .bulldozer__lift,
+  .bulldozer__body,
+  .bulldozer__wheel {
+    animation: none;
   }
 }
